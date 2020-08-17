@@ -9,6 +9,8 @@ if len(sys.argv) != 2:
 
 # set destination path
 destination = sys.argv[1]
+if destination[-1] != '/':
+    destination += '/'
 
 # create list for folder template for project
 folderStructure = ['00_PROJETO', '01_DOCS', '02_BINS_EDITORES',
@@ -24,7 +26,7 @@ for folder in folderStructure:
     try:
         os.mkdir(destination + folder)
     except FileExistsError:
-        print("Folder ", destination, " already exists")
+        print("Folder ", destination + folder, " already exists")
 
 # ask for number of episodes
 num_eps = int(input("Qual o número de EPs? "))
@@ -66,12 +68,12 @@ while i <= num_eps:
             print("Folder ", (folder_name + '/' + folder), " already exists")
 
     # generate episode project
-    prj_name = (destination + folderStructure[0] + "/{}_EP{:02d}/{}_EP{:02d}.avp").format(id_prj.upper(), i, id_prj.upper(), i)
+    prj_name = (folder_name + "/{}_EP{:02d}.avp").format(id_prj.upper(), i)
     newprj = open(prj_name, "wb")
     newprj.write(prj_template)
 
     # generate episode Settings file
-    set_name = (destination + folderStructure[0] + "/{}_EP{:02d}/{}_EP{:02d} Settings.xml").format(id_prj.upper(), i, id_prj.upper(), i)
+    set_name = (folder_name + "/{}_EP{:02d} Settings.xml").format(id_prj.upper(), i)
     newset = open(set_name, "wb")
     newset.write(set_template)
 
