@@ -4,6 +4,15 @@ A Python script for creating template folders and Avid Projects.
 You can set number of episodes, the ID of the project and two framerates (23,98 and 29,97).
 All Avid projects are 1080p.
 
+Download folders.py and AvidTemplate folder.
+
+Put both in same folder and run the script in a terminal.
+
+Usage: pyhton folders.py /destination
+
+Ex:
+python folders.py c:/test/
+
 Template (PT-BR):
 
 00_PROJETO
